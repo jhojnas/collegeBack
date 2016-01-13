@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/colegio?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">admin</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="com/sistemas/educatic/pojo/Institucion.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Grado.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Telefono.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Archivoimagen.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Usuario.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Curso.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Rendimiento.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/GradoCurso.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Modalidadingreso.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Estudiante.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Apoderado.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/DocenteGrado.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Tutor.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Vinculo.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Matricula.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Permiso.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Persona.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Docente.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Horario.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/UsuarioPermiso.hbm.xml"/>
+    <mapping resource="com/sistemas/educatic/pojo/Tarea.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
