@@ -54,3 +54,4 @@ public class GenericResource {
     public void putXml(String content) {
     }
 }
+//ggggg
