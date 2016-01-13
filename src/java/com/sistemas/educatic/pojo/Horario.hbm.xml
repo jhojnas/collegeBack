@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 13, 2016 4:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistemas.educatic.pojo.Horario" table="horario" catalog="colegio" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="docente" class="com.sistemas.educatic.pojo.Docente" fetch="select">
+            <column name="Docente_id" not-null="true" />
+        </many-to-one>
+        <property name="horaInicio" type="timestamp">
+            <column name="horaInicio" length="19" />
+        </property>
+        <property name="horaFin" type="timestamp">
+            <column name="horaFin" length="19" />
+        </property>
+        <set name="gradoCursos" table="grado_curso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Horario_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.GradoCurso" />
+        </set>
+    </class>
+</hibernate-mapping>

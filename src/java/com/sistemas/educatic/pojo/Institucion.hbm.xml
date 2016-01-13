@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 13, 2016 4:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistemas.educatic.pojo.Institucion" table="institucion" catalog="colegio" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreEntidad" type="string">
+            <column name="nombreEntidad" length="60" not-null="true" />
+        </property>
+        <property name="estado" type="byte">
+            <column name="estado" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="100" not-null="true" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" length="100" />
+        </property>
+        <property name="telefono1" type="string">
+            <column name="telefono1" length="12" />
+        </property>
+        <property name="telefono2" type="string">
+            <column name="telefono2" length="12" />
+        </property>
+        <set name="docentes" table="docente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Institucion_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Docente" />
+        </set>
+    </class>
+</hibernate-mapping>

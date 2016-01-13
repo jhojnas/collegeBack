@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 13, 2016 4:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistemas.educatic.pojo.Permiso" table="permiso" catalog="colegio" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="denominacion" type="string">
+            <column name="denominacion" length="45" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="45" not-null="true" />
+        </property>
+        <set name="usuarioPermisos" table="usuario_permiso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Permiso_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.UsuarioPermiso" />
+        </set>
+    </class>
+</hibernate-mapping>

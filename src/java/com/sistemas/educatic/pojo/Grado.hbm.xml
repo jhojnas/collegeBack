@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 13, 2016 4:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistemas.educatic.pojo.Grado" table="grado" catalog="colegio" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="matricula" class="com.sistemas.educatic.pojo.Matricula" fetch="select">
+            <column name="Matricula_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tutor" class="com.sistemas.educatic.pojo.Tutor" fetch="select">
+            <column name="Tutor_id" not-null="true" />
+        </many-to-one>
+        <property name="denominacion" type="string">
+            <column name="denominacion" length="50" not-null="true" />
+        </property>
+        <property name="seccion" type="char">
+            <column name="seccion" length="1" not-null="true" />
+        </property>
+        <property name="estado" type="byte">
+            <column name="estado" not-null="true" />
+        </property>
+        <property name="anio" type="date">
+            <column name="anio" length="10" not-null="true" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" length="45" />
+        </property>
+        <property name="turno" type="string">
+            <column name="turno" length="10" not-null="true" />
+        </property>
+        <property name="maxAlumno" type="byte">
+            <column name="maxAlumno" not-null="true" />
+        </property>
+        <set name="docenteGrados" table="docente_grado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Grado_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.DocenteGrado" />
+        </set>
+        <set name="gradoCursos" table="grado_curso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Grado_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.GradoCurso" />
+        </set>
+    </class>
+</hibernate-mapping>

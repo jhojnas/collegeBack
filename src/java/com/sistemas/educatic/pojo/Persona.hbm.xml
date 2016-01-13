@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 13, 2016 4:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistemas.educatic.pojo.Persona" table="persona" catalog="colegio" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="apaterno" type="string">
+            <column name="aPaterno" length="45" not-null="true" />
+        </property>
+        <property name="amaterno" type="string">
+            <column name="aMaterno" length="45" not-null="true" />
+        </property>
+        <property name="dni" type="string">
+            <column name="dni" length="8" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="100" not-null="true" />
+        </property>
+        <property name="edad" type="int">
+            <column name="edad" not-null="true" />
+        </property>
+        <property name="sexo" type="byte">
+            <column name="sexo" not-null="true" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="observacion" length="80" />
+        </property>
+        <property name="idUsuario" type="int">
+            <column name="idUsuario" not-null="true" />
+        </property>
+        <property name="estado" type="byte">
+            <column name="estado" not-null="true" />
+        </property>
+        <set name="telefonos" table="telefono" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persona_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Telefono" />
+        </set>
+        <set name="tutors" table="tutor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persona_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Tutor" />
+        </set>
+        <set name="apoderados" table="apoderado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persona_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Apoderado" />
+        </set>
+        <set name="archivoimagens" table="archivoimagen" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persona_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Archivoimagen" />
+        </set>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persona_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Usuario" />
+        </set>
+        <set name="docentes" table="docente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persona_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Docente" />
+        </set>
+        <set name="estudiantes" table="estudiante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persona_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Estudiante" />
+        </set>
+    </class>
+</hibernate-mapping>

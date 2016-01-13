@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 13, 2016 4:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sistemas.educatic.pojo.Matricula" table="matricula" catalog="colegio" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="apoderado" class="com.sistemas.educatic.pojo.Apoderado" fetch="select">
+            <column name="Apoderado_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estudiante" class="com.sistemas.educatic.pojo.Estudiante" fetch="select">
+            <column name="Estudiante_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="modalidadingreso" class="com.sistemas.educatic.pojo.Modalidadingreso" fetch="select">
+            <column name="ModalidadIngreso_id" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" />
+        </property>
+        <property name="idUsuario" type="int">
+            <column name="idUsuario" not-null="true" />
+        </property>
+        <set name="grados" table="grado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Matricula_id" not-null="true" />
+            </key>
+            <one-to-many class="com.sistemas.educatic.pojo.Grado" />
+        </set>
+    </class>
+</hibernate-mapping>
